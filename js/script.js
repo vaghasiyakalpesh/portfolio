@@ -188,47 +188,87 @@ resumeBtns.forEach((btn, index) => {
   });
 });
 
-const arrowRigth = document.querySelector(
+// DYNAMIC PORTFOLIO CAROUSEL FUNCTIONALITY
+const arrowRight = document.querySelector(
   ".portfolio-box .naviation .arrow-right"
 );
 const arrowLeft = document.querySelector(
   ".portfolio-box .naviation .arrow-left"
 );
 
-let index = 0;
+// Get the actual number of portfolio items dynamically
+const portfolioDetails = document.querySelectorAll(".portfolio-detail");
+const totalPortfolioItems = portfolioDetails.length;
 
+let currentIndex = 0;
+
+// Function to update arrow states based on current position and total items
+const updateArrowStates = () => {
+  // Remove all states first
+  arrowLeft.classList.remove("disabled");
+  arrowRight.classList.remove("disabled");
+
+  // If there's only one item or no items, hide both arrows
+  if (totalPortfolioItems <= 1) {
+    arrowLeft.classList.add("disabled");
+    arrowRight.classList.add("disabled");
+    return;
+  }
+
+  // Disable left arrow if at the beginning
+  if (currentIndex === 0) {
+    arrowLeft.classList.add("disabled");
+  }
+
+  // Disable right arrow if at the end
+  if (currentIndex === totalPortfolioItems - 1) {
+    arrowRight.classList.add("disabled");
+  }
+};
+
+// Function to activate portfolio based on current index
 const activePortfolio = () => {
   const imgSlides = document.querySelector(".portfolio-box .img-slide");
-  const portfolioDetails = document.querySelectorAll(".portfolio-detail");
 
-  imgSlides.style.transform = `translate(calc(${index * -100}% - ${
-    index * 2
+  // Move the image slide
+  imgSlides.style.transform = `translate(calc(${currentIndex * -100}% - ${
+    currentIndex * 2
   }rem))`;
 
+  // Update portfolio details
   portfolioDetails.forEach((detail) => {
     detail.classList.remove("active");
   });
-  portfolioDetails[index].classList.add("active");
+
+  // Activate current portfolio detail
+  if (portfolioDetails[currentIndex]) {
+    portfolioDetails[currentIndex].classList.add("active");
+  }
+
+  // Update arrow states
+  updateArrowStates();
 };
 
-arrowRigth.addEventListener("click", () => {
-  if (index < 4) {
-    index++;
-    arrowLeft.classList.remove("disabled");
-  } else {
-    index = 5;
-    arrowRigth.classList.add("disabled");
+// Right arrow click handler
+arrowRight.addEventListener("click", () => {
+  if (currentIndex < totalPortfolioItems - 1) {
+    currentIndex++;
+    activePortfolio();
   }
-  activePortfolio();
 });
 
+// Left arrow click handler
 arrowLeft.addEventListener("click", () => {
-  if (index > 1) {
-    index--;
-    arrowRigth.classList.remove("disabled");
-  } else {
-    index = 0;
-    arrowLeft.classList.add("disabled");
+  if (currentIndex > 0) {
+    currentIndex--;
+    activePortfolio();
   }
+});
+
+// Initialize portfolio on page load
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize the portfolio carousel
   activePortfolio();
+
+  console.log(`Portfolio initialized with ${totalPortfolioItems} items`);
 });
