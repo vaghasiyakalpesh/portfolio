@@ -19,8 +19,6 @@ A modern, responsive personal portfolio website for Kalpesh Vaghasiya, built wit
 ```
 ├── css/
 │   └── style.css                # Main stylesheet
-├── documents/
-│   └── kalpesh_vaghasiya_resume.pdf  # Resume file
 ├── images/
 │   ├── my_photo.jpg             # Profile image
 │   ├── lonlonlyf.png            # Portfolio project image
@@ -35,6 +33,10 @@ A modern, responsive personal portfolio website for Kalpesh Vaghasiya, built wit
 └── index.html                   # Main HTML file
 ```
 
+> **Note:**  
+> The `documents/` directory has been removed.  
+> The resume is now available via a Google Drive link, which is set in the download button on the website.
+
 ## Getting Started
 
 1. **Clone or Download** this repository.
@@ -45,7 +47,7 @@ A modern, responsive personal portfolio website for Kalpesh Vaghasiya, built wit
 
 - **Profile Info:** Edit the content in `index.html` (name, about, services, etc.).
 - **Images:** Replace images in the `images/` folder.
-- **Resume:** Update `documents/kalpesh_vaghasiya_resume.pdf` with your own resume.
+- **Resume:** Update the Google Drive link in the download button in `index.html` with your own resume link.
 - **Styling:** Modify `css/style.css` for custom colors or layout.
 
 ## Scripts
@@ -69,4 +71,4 @@ To use your own Formspree endpoint, update the form's `action` attribute in `ind
 
 This project is provided for personal portfolio and educational use.  
 You are welcome to use it as a template for your own portfolio.  
-Attribution is appreciated but not required.
+Attribution is appreciated
