@@ -270,5 +270,60 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize the portfolio carousel
   activePortfolio();
 
-  console.log(`Portfolio initialized with ${totalPortfolioItems} items`);
+  // console.log(`Portfolio initialized with ${totalPortfolioItems} items`);
+});
+
+//contact form functionality send in direct to email using formspree
+const contactForm = document.getElementById("contact-form");
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = this;
+  const formData = new FormData(form);
+  const successMessage = document.getElementsByClassName("success-msg")[0];
+  const errorMessage = document.getElementsByClassName("error-msg")[0];
+  const submitButton = document.getElementById("submitBtn");
+
+  // Hide previous messages
+  successMessage.style.display = "none";
+  errorMessage.style.display = "none";
+
+  // Show loading state
+  submitButton.textContent = "Sending...";
+  submitButton.disabled = true;
+
+  // Send form data to Formspree (URL is hidden in JavaScript)
+  fetch("https://formspree.io/f/xeokpzgo", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Success
+        successMessage.style.display = "block";
+        form.reset();
+        // Scroll to success message
+        successMessage.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      } else {
+        throw new Error("Network response was not ok");
+      }
+    })
+    .catch((error) => {
+      // Error
+      errorMessage.style.display = "block";
+      console.error("Error:", error);
+      // Scroll to error message
+      errorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+    })
+    .finally(() => {
+      // Reset button
+      submitButton.textContent = "Send Message";
+      submitButton.disabled = false;
+    });
 });

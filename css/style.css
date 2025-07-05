@@ -787,6 +787,30 @@ section.active {
   margin-top: 2rem;
   cursor: pointer;
 }
+
+.contact-box .success-msg {
+  display: none;
+  background: rgba(124, 240, 61, 0.1);
+  color: var(--main-color);
+  padding: 1.5rem;
+  border-radius: 0.6rem;
+  margin-bottom: 2rem;
+  border: 0.15rem solid var(--main-color);
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.contact-box .error-msg {
+  display: none;
+  background: rgba(255, 82, 82, 0.1);
+  color: #ff5252;
+  padding: 1.5rem;
+  border-radius: 0.6rem;
+  margin-bottom: 2rem;
+  border: 0.15rem solid #ff5252;
+  font-size: 1.6rem;
+  text-align: center;
+}
 /* end contact section */
 
 /* Custom Scrollbar Styles */
@@ -814,7 +838,7 @@ section.active {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5cb82a; 
+  background: #5cb82a;
   box-shadow: 0 0 5px var(--main-color);
 }
 
@@ -824,7 +848,7 @@ section.active {
 }
 
 .resume-list::-webkit-scrollbar {
-  width: 0.7rem; 
+  width: 0.7rem;
 }
 
 .resume-list::-webkit-scrollbar-track {
