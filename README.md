@@ -2,6 +2,10 @@
 
 A modern, responsive personal portfolio website for Kalpesh Vaghasiya, built with HTML, CSS, and JavaScript.
 
+## Project Preview
+
+You can view a live preview of this project at [Kalpesh Vaghasiya's Portfolio](https://kp-portfolio-00.vercel.app/).
+
 ## Features
 
 - **Animated Home Section:** Introduction, animated text, and profile image.
@@ -32,10 +36,6 @@ A modern, responsive personal portfolio website for Kalpesh Vaghasiya, built wit
 │   └── script.js                # Main JavaScript file (includes Formspree integration)
 └── index.html                   # Main HTML file
 ```
-
-> **Note:**  
-> The `documents/` directory has been removed.  
-> The resume is now available via a Google Drive link, which is set in the download button on the website.
 
 ## Getting Started
 
